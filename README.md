@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Build a simple blog.
 
-Things you may want to cover:
+Add a Post model which has title and body as its fields, which allows users to create posts.
 
-* Ruby version
+Users should be able to:
 
-* System dependencies
+- Create posts
 
-* Configuration
+- List all the posts (displaying the title and author - each post should belong to a user)
 
-* Database creation
+- Update their own posts
 
-* Database initialization
+- Show the details page of a specific post
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If someone is not logged in, he/she can only see posts, but not edit them.
