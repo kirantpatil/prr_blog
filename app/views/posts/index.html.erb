@@ -25,4 +25,8 @@
 <div>
   <%= link_to "Log out", logout_path, method: "delete" %>
 </div>
+<% else %>
+<div>
+  <%= link_to "Log In", new_login_path, method: "get" %>
+</div>
 <% end %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "posts#index"
+  root "logins#new"
   get '/logout' => 'logins#destroy'
   resources :logins, only: %i[new create]
   resources :registrations, only: %i[new create]
