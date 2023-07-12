@@ -1,14 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Posts</h1>
+<% if current_user %>
+  <h2><%= "Author : "+ current_user.email %></h2>
+<% else %>
+  <h2><%= "List of all author posts anonymous user" %></h2>
+<% end %>
 
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
-      <%= link_to "Show this post", post %>
+      <% if current_user %>
+        <%= link_to "Show this post", post %>
+      <% end %>
     </p>
   <% end %>
 </div>
 
+<% if current_user %>
+
 <%= link_to "New post", new_post_path %>
+
+<div>
+  <%= link_to "Log out", logout_path, method: "delete" %>
+</div>
+<% end %>

@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
+
   def new
+    redirect_to posts_path if current_user
     @user = User.new
   end
 

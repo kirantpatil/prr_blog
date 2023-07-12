@@ -3,15 +3,26 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    # user = User.find_by(id: session[:user_id])
+    # redirect_to new_login_path unless user
+    # @posts = Post.all
+    if current_user
+      @posts = @current_user.posts
+    else
+      @posts = Post.all
+    end
+
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @current_user = current_user
   end
 
   # GET /posts/new
   def new
+    # user = helpers.current_user
+    redirect_to new_login_path unless current_user
     @post = Post.new
   end
 
@@ -21,7 +32,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    # @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -67,4 +79,9 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body)
     end
+
+    # def current_user
+    #   return unless session[:user_id]
+    #   @current_user ||= User.find(session[:user_id])
+    # end
 end
